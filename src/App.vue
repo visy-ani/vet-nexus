@@ -2,41 +2,48 @@
   <div class="min-h-screen">
     <!-- Navbar -->
     <nav :class="[
-      'fixed w-full z-50 transition-all duration-300',
+      'navbar fixed w-full z-50 transition-all duration-300',
       isScrolled
         ? 'py-4 bg-white/10 backdrop-blur-md border-b border-white/10 shadow-lg'
         : 'py-12'
     ]">
-      <div class="navcontainer mx-auto flex justify-between items-start">
+      <div class="navcontainer mx-auto flex justify-between items-start px-4">
         <!-- Logo and Know image aligned left -->
         <div class="flex flex-col items-start">
-          <img src="/src/assets/Logo.svg" alt="Logo" class="h-16 w-auto">
-          <img src="/src/assets/Know.png" alt="Know Logo" class="h-12 w-auto mt-2 px-6">
+          <img src="/src/assets/Logo.svg" alt="Logo" class="h-12 w-auto sm:h-16">
+          <img src="/src/assets/Know.png" alt="Know Logo" class="h-8 w-auto mt-2 px-4 sm:h-12 sm:px-6">
         </div>
 
-        <!-- Navigation Links aligned top -->
-        <div class="flex mt-6 space-x-12">
-          <!-- Use conditional classes for link text color -->
-          <a href="#"
-            :class="[isScrolled ? 'text-black hover:text-gray-500' : 'text-white hover:text-gray-300', 'text-xl font-light']">
-            Home
+        <!-- Mobile Menu Button -->
+        <button @click="toggleMenu" class="block lg:hidden mt-6">
+          <svg xmlns="http://www.w3.org/MPH" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            :class="[isScrolled ? 'text-black' : 'text-white']" class="w-6 h-6">
+            <path v-if="!isMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+            <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden lg:flex mt-6 space-x-12">
+          <a v-for="link in navLinks" :key="link" href="#" :class="[
+            isScrolled ? 'text-black hover:text-gray-500' : 'text-white hover:text-gray-300',
+            'text-xl font-light'
+          ]">
+            {{ link }}
           </a>
-          <a href="#"
-            :class="[isScrolled ? 'text-black hover:text-gray-500' : 'text-white hover:text-gray-300', 'text-xl font-light']">
-            About
-          </a>
-          <a href="#"
-            :class="[isScrolled ? 'text-black hover:text-gray-500' : 'text-white hover:text-gray-300', 'text-xl font-light']">
-            Blog
-          </a>
-          <a href="#"
-            :class="[isScrolled ? 'text-black hover:text-gray-500' : 'text-white hover:text-gray-300', 'text-xl font-light']">
-            News
-          </a>
-          <a href="#"
-            :class="[isScrolled ? 'text-black hover:text-gray-500' : 'text-white hover:text-gray-300', 'text-xl font-light']">
-            Contact Us
-          </a>
+        </div>
+
+        <!-- Mobile/Tablet Menu -->
+        <div v-show="isMenuOpen"
+          class="lg:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-lg">
+          <div class="flex flex-col py-4">
+            <a v-for="link in navLinks" :key="link" href="#"
+              class="px-6 py-3 text-black hover:bg-gray-100 text-lg border-b border-gray-100 last:border-none"
+              @click="closeMenu">
+              {{ link }}
+            </a>
+          </div>
         </div>
       </div>
     </nav>
@@ -44,25 +51,27 @@
     <!-- Hero Section -->
     <section class="relative h-screen">
       <!-- Background Image with Overlay -->
-      <div class="absolute inset-0 bg-cover bg-center bg-[url('/src/assets/hero-bg.png')]">
-        <div class="absolute inset-0" style="background-color: rgba(30, 35, 50, 0.8);"></div>
+      <div class="absolute inset-0 bg-center bg-[#2D3250]">
+        <div class="absolute inset-0 bg-cover bg-[url('/src/assets/hero-bg.png')]"></div>
       </div>
 
       <!-- Content -->
       <div class="relative container mx-auto h-full flex flex-col items-center justify-center text-white">
-        <h1 class="text-[70px] font-light text-center leading-tight mb-8 mt-20"
+        <h1
+          class="text-3xl sm:text-4xl md:text-5xl lg:text-[70px] font-light text-center leading-tight mb-4 sm:mb-6 lg:mb-8 mt-10 sm:mt-16 lg:mt-20"
           style="font-family: 'Merriweather', serif;">
-          Hey Doc! What's the best<br />
-          food for my pet?
+          Hey Doc! What's the best<br class="hidden sm:block" />
+          <span class="sm:hidden"> </span>food for my pet?
         </h1>
 
 
 
         <!-- Red Ribbon -->
-        <div class="relative bg-red-600 transform -skew-x-[35deg] py-2 px-8 mb-6 mt-2 
+        <div class="relative bg-red-600 transform -skew-x-[35deg] py-1 sm:py-2 px-4 sm:px-8 mb-4 sm:mb-6 mt-1 sm:mt-2
             before:content-[''] before:absolute before:top-0 before:right-0 before:bottom-0 before:left-[-5px] 
             before:bg-red-600 before:transform before:skew-x-[50deg] before:-z-10">
-          <span class="block transform skew-x-[35deg] text-2xl font-light relative">
+          <span
+            class="block transform skew-x-[35deg] text-lg sm:text-2xl font-light relative whitespace-normal sm:whitespace-nowrap px-2 sm:px-0">
             Science + Data + Genetics = Optimal Pet Diet
           </span>
         </div>
@@ -85,7 +94,7 @@
 
     <!-- Database Section -->
     <section class="py-6 bg-white">
-      <div class="container mx-auto flex gap-4">
+      <div class="container mx-auto flex gap-4 databaseSection">
         <!-- Left Side - Phone Mockup -->
         <div class="auto">
           <img src="/src/assets/phone-mockup.png" alt="Pet Health Profile Mobile App" class="rounded-3xl" />
@@ -138,10 +147,11 @@
     <section class="py-20 bg-[#2D3250] text-white">
       <div class="container mx-auto">
         <!-- Top Content -->
-        <div class="grid grid-cols-2 gap-4 mb-20">
+        <div :class="['accountGrid flex flex-col sm:grid grid-cols-2 gap-4 mb-20']">
           <div class="flex flex-col justify-start">
-            <h2 class="text-3xl font-medium mb-4 whitespace-nowrap" style="font-family: 'Merriweather'">
-              Evaluate Account Creation Process</h2>
+            <h2 class="text-3xl font-medium mb-4 whitespace-nowrap" :style="{ fontFamily: 'Merriweather' }">
+              Evaluate Account Creation Process
+            </h2>
             <p class="mb-8 max-w-[30rem]">
               We encourage every prospective subscriber to our Pet Nutritional
               Technology service offering to set aside a few minutes to create an
@@ -153,13 +163,13 @@
             </p>
             <div class="flex justify-center max-w-[30rem]">
               <button class="bg-[#F8B179] text-gray-600 px-8 py-3 rounded w-fit self-center font-bold"
-                style="font-family: 'Inter', sans-serif;">
+                :style="{ fontFamily: 'Inter, sans-serif' }">
                 Create Account
               </button>
             </div>
           </div>
           <div>
-            <img src="/src/assets/laptop-mockup.png" alt="Laptop Mockup" class="w-full" />
+            <img src="/src/assets/laptop-mockup.png" alt="Laptop Mockup" class="w-full">
           </div>
         </div>
 
@@ -298,7 +308,9 @@ export default {
         website: '',
         email: ''
       },
-      isScrolled: false
+      isScrolled: false,
+      isMenuOpen: false,
+      navLinks: ['Home', 'About', 'Blog', 'News', 'Contact Us']
     }
   },
   methods: {
@@ -308,6 +320,12 @@ export default {
     handleScroll() {
       const heroHeight = window.innerHeight;
       this.isScrolled = window.scrollY > heroHeight - 100;
+    },
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
+    },
+    closeMenu() {
+      this.isMenuOpen = false;
     }
   },
   mounted() {
@@ -324,14 +342,67 @@ export default {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 3rem;
+  padding: 0 1rem;
+
+  @media (min-width: 640px) {
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 0 3rem;
+  }
 }
 
 .navcontainer {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 3rem;
+  padding: 0 1rem;
+
+  @media (min-width: 640px) {
+    padding: 0 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 0 3rem;
+  }
 }
 
-/* Add any additional custom styles here */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.5rem 0;
+  }
+
+  .accountGrid {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 640px) {
+  h1 {
+    line-height: 1.2;
+    padding: 0 1rem;
+  }
+
+  .databaseSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  h1 {
+    line-height: 1.3;
+    padding: 0 2rem;
+  }
+}
 </style>
