@@ -44,7 +44,7 @@
     <!-- Hero Section -->
     <section class="relative h-screen">
       <!-- Background Image with Overlay -->
-      <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/src/assets/hero-bg.png');">
+      <div class="absolute inset-0 bg-cover bg-center bg-[url('/src/assets/hero-bg.png')]">
         <div class="absolute inset-0" style="background-color: rgba(30, 35, 50, 0.8);"></div>
       </div>
 
@@ -238,7 +238,7 @@
     <!-- Subscription Section -->
     <section class="relative py-20">
       <!-- Background Image with Overlay -->
-      <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/src/assets/vet-bg.png');">
+      <div class="absolute inset-0 bg-cover bg-center bg-[url('/src/assets/vet-bg.png')]">
       </div>
 
       <!-- Content -->
