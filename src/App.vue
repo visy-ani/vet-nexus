@@ -3,9 +3,7 @@
     <!-- Navbar -->
     <nav :class="[
       'navbar fixed w-full z-50 transition-all duration-300',
-      isScrolled
-        ? 'py-4 bg-white/10 backdrop-blur-md border-b border-white/10 shadow-lg'
-        : 'py-12'
+      isScrolled ? 'py-4 bg-[#2D3250] shadow-lg' : 'py-12'
     ]">
       <div class="navcontainer mx-auto flex justify-between items-start px-4">
         <!-- Logo and Know image aligned left -->
@@ -27,7 +25,7 @@
         <!-- Desktop Navigation -->
         <div class="hidden lg:flex mt-6 space-x-12">
           <a v-for="link in navLinks" :key="link" href="#" :class="[
-            isScrolled ? 'text-black hover:text-gray-500' : 'text-white hover:text-gray-300',
+            isScrolled ? 'text-white hover:text-gray-500' : 'text-white hover:text-gray-300',
             'text-xl font-light'
           ]">
             {{ link }}
@@ -39,7 +37,7 @@
           class="lg:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-lg">
           <div class="flex flex-col py-4">
             <a v-for="link in navLinks" :key="link" href="#"
-              class="px-6 py-3 text-black hover:bg-gray-100 text-lg border-b border-gray-100 last:border-none"
+              class="px-6 py-3 text-white hover:bg-gray-100 text-lg border-b border-gray-100 last:border-none"
               @click="closeMenu">
               {{ link }}
             </a>
@@ -148,11 +146,12 @@
       <div class="container mx-auto">
         <!-- Top Content -->
         <div :class="['accountGrid flex flex-col sm:grid grid-cols-2 gap-4 mb-20']">
-          <div class="flex flex-col justify-start">
-            <h2 class="text-3xl font-medium mb-4 whitespace-nowrap" :style="{ fontFamily: 'Merriweather' }">
+          <div class="account-section flex flex-col justify-start">
+            <h2 class="account-heading text-3xl font-medium mb-4 whitespace-nowrap"
+              :style="{ fontFamily: 'Merriweather' }">
               Evaluate Account Creation Process
             </h2>
-            <p class="mb-8 max-w-[30rem]">
+            <p class="account-text mb-8 max-w-[30rem]">
               We encourage every prospective subscriber to our Pet Nutritional
               Technology service offering to set aside a few minutes to create an
               account and complete the process through purchase and review of
@@ -162,7 +161,8 @@
               please complete with accuracy the Pet Information questionnair.
             </p>
             <div class="flex justify-center max-w-[30rem]">
-              <button class="bg-[#F8B179] text-gray-600 px-8 py-3 rounded w-fit self-center font-bold"
+              <button
+                class="create-account-btn bg-[#F8B179] text-gray-600 px-8 py-3 rounded w-fit self-center font-bold"
                 :style="{ fontFamily: 'Inter, sans-serif' }">
                 Create Account
               </button>
@@ -253,11 +253,11 @@
 
       <!-- Content -->
       <div class="relative container mx-auto text-black">
-        <h2 class="text-4xl font-bold text-center mb-4"
+        <h2 class="Subscription-heading text-4xl font-bold text-center mb-4"
           style="font-family: 'Merriweather', serif; text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);">
           Request a Subscription Agreement
         </h2>
-        <p class="text-center mb-12 text-xl font-light" style="font-family: 'Inter', sans-serif;">
+        <p class="Subscription-subheading text-center mb-12 text-xl font-light" style="font-family: 'Inter', sans-serif;">
           To receive your subscription agreement, please fill out the form below<br />
           and submit your request. We'll get in touch with you shortly!
         </p>
@@ -343,18 +343,15 @@ export default {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+}
 
-  @media (min-width: 640px) {
-    padding: 0 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+.account-heading {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
 
-  @media (min-width: 1024px) {
-    padding: 0 3rem;
-  }
+.create-account-btn {
+  font-size: 1rem;
 }
 
 .navcontainer {
@@ -396,6 +393,18 @@ export default {
     flex-direction: column;
     align-items: center;
     text-align: center;
+  }
+
+  .account-heading {
+    font-size: 1.2rem;
+  }
+
+  .Subscription-heading{
+    font-size: 2rem;
+  }
+
+  .Subscription-subheading{
+    font-size: 0.9rem;
   }
 }
 
