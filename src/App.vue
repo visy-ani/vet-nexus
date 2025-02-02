@@ -65,14 +65,12 @@
 
 
         <!-- Red Ribbon -->
-        <div class="relative bg-red-600 transform -skew-x-[35deg] py-1 sm:py-2 px-4 sm:px-8 mb-4 sm:mb-6 mt-1 sm:mt-2
-            before:content-[''] before:absolute before:top-0 before:right-0 before:bottom-0 before:left-[-5px] 
-            before:bg-red-600 before:transform before:skew-x-[50deg] before:-z-10">
-          <span
-            class="block transform skew-x-[35deg] text-lg sm:text-2xl font-light relative whitespace-normal sm:whitespace-nowrap px-2 sm:px-0">
+        <div class="ribbon">
+          <span class="ribbon-text">
             Science + Data + Genetics = Optimal Pet Diet
           </span>
         </div>
+
 
 
 
@@ -183,7 +181,6 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
               <!-- Step 1 -->
               <div class="flex flex-col items-center">
-                <!-- Text area with auto adjustable height -->
                 <div class="flex flex-col text-center h-[100px]">
                   <h2 class="text-xl md:text-2xl font-semibold mb-2">
                     Step 1) Create Account Page
@@ -202,7 +199,6 @@
 
               <!-- Step 2 -->
               <div class="flex flex-col items-center max-w-[100%]">
-                <!-- Text area with auto adjustable height -->
                 <div class="flex flex-col text-center h-[100px]">
                   <h2 class="text-xl md:text-2xl font-semibold mb-2">
                     Step 2) Diet Plan Services Page
@@ -221,7 +217,6 @@
 
               <!-- Step 3 -->
               <div class="flex flex-col items-center">
-                <!-- Text area with auto adjustable height -->
                 <div class="flex flex-col text-center h-[100px]">
                   <h2 class="text-xl md:text-2xl font-semibold mb-2">
                     Step 3) Shopping Cart Page
@@ -257,7 +252,8 @@
           style="font-family: 'Merriweather', serif; text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);">
           Request a Subscription Agreement
         </h2>
-        <p class="Subscription-subheading text-center mb-12 text-xl font-light" style="font-family: 'Inter', sans-serif;">
+        <p class="Subscription-subheading text-center mb-12 text-xl font-light"
+          style="font-family: 'Inter', sans-serif;">
           To receive your subscription agreement, please fill out the form below<br />
           and submit your request. We'll get in touch with you shortly!
         </p>
@@ -399,11 +395,11 @@ export default {
     font-size: 1.2rem;
   }
 
-  .Subscription-heading{
+  .Subscription-heading {
     font-size: 2rem;
   }
 
-  .Subscription-subheading{
+  .Subscription-subheading {
     font-size: 0.9rem;
   }
 }
@@ -414,4 +410,84 @@ export default {
     padding: 0 2rem;
   }
 }
+
+.ribbon {
+  position: relative;
+  background-color: #dc2626; 
+  transform: skewX(-20deg);
+  padding: 0.5rem 1.5rem; 
+  margin-bottom: 1rem;
+  margin-top: 0.25rem;
+}
+
+.ribbon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: -3px;
+  background-color: #dc2626; 
+  transform: skewX(30deg);
+  z-index: -1;
+}
+
+.ribbon-text {
+  display: block;
+  transform: skewX(20deg);
+  font-size: 1.25rem; 
+  font-weight: 300;
+  white-space: normal;
+  padding: 0 0.75rem;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .ribbon {
+    padding: 0.2rem 0.5rem;
+    transform: skewX(-15deg); 
+  }
+  
+  .ribbon::before {
+    transform: skewX(25deg); 
+  }
+
+  .ribbon-text {
+    font-size: 0.875rem; 
+    padding: 0 0.25rem;
+  }
+}
+
+/* Tablets */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .ribbon {
+    padding: 0.3rem 0.75rem;
+    transform: skewX(-18deg);
+  }
+
+  .ribbon::before {
+    transform: skewX(28deg);
+  }
+
+  .ribbon-text {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ribbon {
+    padding: 0.6rem 1.5rem; 
+    transform: skewX(-25deg); 
+  }
+
+  .ribbon::before {
+    transform: skewX(35deg);
+  }
+
+  .ribbon-text {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+}
+
 </style>
