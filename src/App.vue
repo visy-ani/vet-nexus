@@ -314,8 +314,9 @@ export default {
       console.log('Form submitted:', this.formData)
     },
     handleScroll() {
-      const heroHeight = window.innerHeight;
-      this.isScrolled = window.scrollY > heroHeight - 100;
+      const heroHeight = window.innerHeight; 
+      const scrollTriggerPoint = heroHeight / 5;
+      this.isScrolled = window.scrollY > scrollTriggerPoint;
     },
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
@@ -413,9 +414,9 @@ export default {
 
 .ribbon {
   position: relative;
-  background-color: #dc2626; 
+  background-color: #dc2626;
   transform: skewX(-20deg);
-  padding: 0.5rem 1.5rem; 
+  padding: 0.5rem 1.5rem;
   margin-bottom: 1rem;
   margin-top: 0.25rem;
 }
@@ -427,7 +428,7 @@ export default {
   right: 0;
   bottom: 0;
   left: -3px;
-  background-color: #dc2626; 
+  background-color: #dc2626;
   transform: skewX(30deg);
   z-index: -1;
 }
@@ -435,7 +436,7 @@ export default {
 .ribbon-text {
   display: block;
   transform: skewX(20deg);
-  font-size: 1.25rem; 
+  font-size: 1.25rem;
   font-weight: 300;
   white-space: normal;
   padding: 0 0.75rem;
@@ -445,15 +446,15 @@ export default {
 @media (max-width: 640px) {
   .ribbon {
     padding: 0.2rem 0.5rem;
-    transform: skewX(-15deg); 
+    transform: skewX(-15deg);
   }
-  
+
   .ribbon::before {
-    transform: skewX(25deg); 
+    transform: skewX(25deg);
   }
 
   .ribbon-text {
-    font-size: 0.875rem; 
+    font-size: 0.875rem;
     padding: 0 0.25rem;
   }
 }
@@ -476,8 +477,8 @@ export default {
 
 @media (min-width: 1024px) {
   .ribbon {
-    padding: 0.6rem 1.5rem; 
-    transform: skewX(-25deg); 
+    padding: 0.6rem 1.5rem;
+    transform: skewX(-25deg);
   }
 
   .ribbon::before {
@@ -489,5 +490,4 @@ export default {
     font-weight: 400;
   }
 }
-
 </style>
