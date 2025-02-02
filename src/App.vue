@@ -44,9 +44,9 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative h-screen">
+    <section class="relative h-screen pt-20 sm:pt-24 lg:pt-28">
       <!-- Background Image with Overlay -->
-      <div class="absolute inset-0 bg-center bg-[#2D3250]">
+      <div class="absolute inset-0 bg-center bg-[#2D3250]" style="top: 6rem;">
         <div class="absolute inset-0 bg-cover bg-[url('/src/assets/hero-bg.png')]"></div>
       </div>
 
@@ -58,22 +58,12 @@
           Hey Doc! What's the best<br class="hidden sm:block" />
           <span class="sm:hidden"> </span>food for my pet?
         </h1>
-
-
-
         <!-- Red Ribbon -->
         <div class="ribbon">
           <span class="ribbon-text">
             Science + Data + Genetics = Optimal Pet Diet
           </span>
         </div>
-
-
-
-
-
-
-
         <p class="text-center text-lg mb-14 max-w-xl">
           Watch the full walkthrough of our app's features and see how it
           revolutionizes pet nutrition using science, data, and genetics.
